@@ -2,9 +2,7 @@ import { createReadStream } from 'fs';
 import { basename } from 'path';
 
 export default async function(fastify) {
-  fastify.get('/:ticketId/:filename', {
-    onRequest: [fastify.authenticate]
-  }, async (request, reply) => {
+  fastify.get('/:ticketId/:filename', async (request, reply) => {
     const { ticketId, filename } = request.params;
     
     const file = await fastify.prisma.file.findFirst({

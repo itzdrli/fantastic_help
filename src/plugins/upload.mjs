@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import multipart from '@fastify/multipart';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const uploadDir = path.join(__dirname, '../uploads');
+const uploadDir = path.join(__dirname, '../../uploads');
 
 export default fp(async function(fastify) {
   if (!fs.existsSync(uploadDir)) {

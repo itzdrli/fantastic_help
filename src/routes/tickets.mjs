@@ -208,7 +208,7 @@ export default async function (fastify) {
     // Build timeline
     const timeline = [
       {
-        label: 'opened',
+        label: 'Opened',
         timestamp: ticket.createdAt.toISOString()
       }
     ];
@@ -216,7 +216,7 @@ export default async function (fastify) {
     // Add replies to timeline
     ticket.replies.forEach(reply => {
       timeline.push({
-        label: 'replied',
+        label: 'Replied',
         timestamp: reply.createdAt.toISOString(),
         userId: reply.user.id
       });
@@ -225,7 +225,7 @@ export default async function (fastify) {
     // Add closed status if applicable
     if (ticket.status === 'CLOSED') {
       timeline.push({
-        label: 'closed',
+        label: 'Closed',
         timestamp: ticket.updatedAt.toISOString()
       });
     }
@@ -248,7 +248,7 @@ export default async function (fastify) {
           content: {
             type: getFileType(file.filename),
             name: file.filename,
-            url: file.url,  // 使用url字段而不是path
+            url: file.url,
             file_type: getFileExtension(file.filename),
             size: 0
           }
